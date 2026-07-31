@@ -12,7 +12,7 @@ export default function Hero({ settings }: HeroProps) {
   const videoSrc = settings.heroVideoFileUrl || settings.heroVideoUrl || "https://cdn.pixabay.com/video/2023/06/15/167389-837151044_large.mp4";
 
   return (
-    <section className="px-4 md:px-8 py-4 bg-bg-cream">
+    <section className="px-4 md:px-8 pt-1 pb-4 md:pt-2 md:pb-6 bg-bg-cream">
       {/* ROUNDED HERO BOX (same border-line view as reference image) */}
       <div className="relative w-full h-[80vh] md:h-[85vh] min-h-[480px] md:min-h-[550px] max-h-[800px] rounded-[2.5rem] overflow-hidden bg-primary-dark shadow-md border border-primary/5">
         
