@@ -8,6 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import ThingsToDo from "@/components/ThingsToDo";
 
 export const revalidate = 10; // Revalidate cache every 10 seconds
 
@@ -30,6 +31,9 @@ export default async function Home() {
 
         {/* Houseboat Category Showcase */}
         <HouseboatsGrid packages={packages} />
+
+        {/* Things to Do in Alleppey Sightseeing Section */}
+        <ThingsToDo packages={packages} />
 
         {/* Masonry guest photo gallery with lightbox (limited to 8 on home page) */}
         <GallerySection images={galleryImages} limit={8} />

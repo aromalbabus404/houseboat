@@ -5,7 +5,7 @@ import { Package } from "@/lib/mockData";
 import PackageCard from "./PackageCard";
 
 interface ActivityLandingPageProps {
-  category: "shikara" | "kayaking" | "speedboat";
+  category: "shikara" | "kayaking" | "speedboat" | "village-tour" | "fishing" | "sunset-cruise";
   title: string;
   tagline: string;
   description: string;

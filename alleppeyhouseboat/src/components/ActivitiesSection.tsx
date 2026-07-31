@@ -70,7 +70,7 @@ export default function ActivitiesSection({ packages }: ActivitiesSectionProps) 
                     <Star className="w-3 h-3 fill-accent text-accent" />
                   </div>
 
-                  <div className="absolute top-4.5 left-4.5 z-20 px-3 py-1.5 rounded-full bg-primary-dark/80 backdrop-blur-sm text-accent font-sans text-[9px] font-bold uppercase tracking-widest">
+                  <div className="absolute top-4.5 left-4.5 z-20 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-sm border border-white/10 shadow-md text-accent font-sans text-[9px] font-extrabold uppercase tracking-widest">
                     {act.category === "shikara" ? "Shikara" : act.category === "kayaking" ? "Kayaking" : "Speedboat"}
                   </div>
 

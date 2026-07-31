@@ -59,7 +59,9 @@ export async function getPackages(): Promise<Package[]> {
       shortDescription,
       "description": pt::text(description),
       "images": images[].asset->url,
-      inclusions
+      inclusions,
+      dayCruisePrice,
+      overnightPrice
     }`;
     const data = await client!.fetch(query);
     if (!data || data.length === 0) return [];
@@ -94,7 +96,9 @@ export async function getPackage(slug: string): Promise<Package | null> {
       shortDescription,
       "description": pt::text(description),
       "images": images[].asset->url,
-      inclusions
+      inclusions,
+      dayCruisePrice,
+      overnightPrice
     }`;
     const data = await client!.fetch(query, { slug });
     if (!data) {

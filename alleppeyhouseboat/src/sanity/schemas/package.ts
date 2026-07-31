@@ -77,5 +77,19 @@ export const packageSchema = defineType({
       of: [{ type: "string" }],
       description: "List of inclusions (e.g. Welcome Drink, Lunch, Cruise Time)",
     }),
+    defineField({
+      name: "dayCruisePrice",
+      title: "Custom Day Cruise Price (Optional)",
+      type: "number",
+      description: "Custom price when Day Cruise option is selected. Defaults to base price or percentage calculation.",
+      validation: (Rule) => Rule.min(0),
+    }),
+    defineField({
+      name: "overnightPrice",
+      title: "Custom Overnight Stay Price (Optional)",
+      type: "number",
+      description: "Custom price when Overnight stay option is selected. Defaults to base price or flat extra fee.",
+      validation: (Rule) => Rule.min(0),
+    }),
   ],
 });

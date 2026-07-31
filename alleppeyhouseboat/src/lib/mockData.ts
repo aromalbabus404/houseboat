@@ -15,13 +15,25 @@ export interface SiteSettings {
 export interface Package {
   title: string;
   slug: string;
-  category: string;
+  category: string; // houseboat-deluxe, houseboat-premium, houseboat-luxury, houseboat-sharing, houseboat-private, shikara, kayaking, speedboat, village-tour, fishing, sunset-cruise, package-day, package-overnight, package-honeymoon, package-family, package-couple, package-group, package-premium
   price: number;
   rating: number;
   shortDescription: string;
   description: string;
   images: string[];
   inclusions: string[];
+  // Detailed attributes
+  bedrooms?: number;
+  capacity?: string;
+  duration?: string;
+  foodIncluded?: string;
+  checkIn?: string;
+  checkOut?: string;
+  facilities?: string[];
+  cancellationPolicy?: string;
+  location?: string;
+  dayCruisePrice?: number;
+  overnightPrice?: number;
 }
 
 export interface Testimonial {
@@ -79,6 +91,15 @@ export const mockPackages: Package[] = [
       "Standard Air Conditioning (9 PM to 6 AM)",
       "Dedicated Captain and Onboard Chef"
     ],
+    bedrooms: 1,
+    capacity: "2 Adults (Up to 1 Child)",
+    duration: "21 Hours (Overnight)",
+    foodIncluded: "Full Board (Lunch, Dinner, Breakfast & Snacks)",
+    checkIn: "12:00 PM",
+    checkOut: "09:00 AM",
+    facilities: ["Attached Bathroom", "LCD TV", "Dining Area", "In-boat Kitchen", "Music System", "Life Jackets"],
+    cancellationPolicy: "Free cancellation up to 7 days before check-in. 50% refund between 7 to 3 days. No refund within 72 hours.",
+    location: "Punnamada Jetty, Alleppey"
   },
   {
     title: "2-Bedroom Premium Houseboat",
@@ -101,6 +122,17 @@ export const mockPackages: Package[] = [
       "High-speed Wi-Fi onboard",
       "3-person professional crew (Captain, Guide, Chef)"
     ],
+    bedrooms: 2,
+    capacity: "4 - 6 Guests",
+    duration: "21 Hours (Overnight)",
+    foodIncluded: "Custom Premium Full Board (Seafood Specials included)",
+    checkIn: "12:00 PM",
+    checkOut: "09:00 AM",
+    facilities: ["Glass Lounge", "High-speed Wi-Fi", "Premium Linen", "Upper Deck Sit-out", "Attached Luxury Baths", "Safety Gear"],
+    cancellationPolicy: "Free cancellation up to 10 days before check-in. 50% refund up to 5 days before check-in.",
+    location: "Finishing Point Jetty, Alleppey",
+    dayCruisePrice: 5250,
+    overnightPrice: 7500
   },
   {
     title: "Royal Luxury Glass Houseboat",
@@ -123,6 +155,15 @@ export const mockPackages: Package[] = [
       "Premium Toiletries & Linens",
       "Kayak attached for private exploring"
     ],
+    bedrooms: 3,
+    capacity: "6 - 9 Guests",
+    duration: "21 Hours (Overnight)",
+    foodIncluded: "Gourmet Dining (Chef-selected local and international delicacies)",
+    checkIn: "12:00 PM",
+    checkOut: "09:00 AM",
+    facilities: ["Fully Glass Enclosed Lounge", "Smart TV with Netflix", "Kayaks", "Premium Toiletries", "En-suite Jacuzzi", "Upper Sun Deck"],
+    cancellationPolicy: "Free cancellation up to 15 days before check-in. 50% refund up to 7 days before check-in.",
+    location: "Punnamada Lake Entrance, Alleppey"
   },
   {
     title: "Private Day-Cruise Houseboat",
@@ -143,6 +184,15 @@ export const mockPackages: Package[] = [
       "6-Hour continuous backwater cruise",
       "Dedicated Crew members"
     ],
+    bedrooms: 1,
+    capacity: "2 - 10 Guests",
+    duration: "6.5 Hours (Day Cruise)",
+    foodIncluded: "Lunch and Evening Snacks",
+    checkIn: "10:30 AM",
+    checkOut: "05:00 PM",
+    facilities: ["Sundeck Lounge", "Dining Table", "Clean Restrooms", "Music System", "Local Guide Crew"],
+    cancellationPolicy: "Free cancellation up to 48 hours before check-in.",
+    location: "Finishing Point Jetty, Alleppey"
   },
   {
     title: "Sharing Cabin Houseboat Experience",
@@ -163,6 +213,15 @@ export const mockPackages: Package[] = [
       "Standard 21-hour cruise schedule",
       "Great opportunity to meet other travelers"
     ],
+    bedrooms: 1,
+    capacity: "2 Adults per Cabin",
+    duration: "21 Hours (Overnight)",
+    foodIncluded: "Buffet Lunch, Dinner, Breakfast & Tea",
+    checkIn: "12:00 PM",
+    checkOut: "09:00 AM",
+    facilities: ["Private Bed & Bath", "Shared Lounge & Dining", "AC (9 PM to 6 AM)", "Safety Equipment"],
+    cancellationPolicy: "Non-refundable booking.",
+    location: "Nehru Trophy Finishing Point, Alleppey"
   },
   {
     title: "Traditional Shikara Boat Ride",
@@ -183,6 +242,14 @@ export const mockPackages: Package[] = [
       "Life jackets provided",
       "Experienced local captain/guide"
     ],
+    capacity: "Up to 8 Guests",
+    duration: "Flexible (Hourly)",
+    foodIncluded: "Not Included (Optional Village lunch stops available)",
+    checkIn: "Flexible (Sunrise to Sunset)",
+    checkOut: "Flexible",
+    facilities: ["Cushioned Seating", "Sun Roof Shade", "Life Jackets", "Experienced Local Captain"],
+    cancellationPolicy: "Free cancellation up to 24 hours before start time.",
+    location: "Punnamada Finishing Point, Alleppey"
   },
   {
     title: "Guided Kayaking Backwater Tour",
@@ -203,6 +270,14 @@ export const mockPackages: Package[] = [
       "Waterproof dry bags for phones/cameras",
       "Complete safety briefing and life jackets"
     ],
+    capacity: "Single & Tandem Kayaks",
+    duration: "3 to 4 Hours",
+    foodIncluded: "Traditional Village Breakfast or Snacks",
+    checkIn: "05:30 AM (Sunrise) or 03:00 PM (Sunset)",
+    checkOut: "Flexible",
+    facilities: ["Premium Kayaks", "Waterproof Dry Bags", "Paddles", "Guide Assistance", "Village Experience"],
+    cancellationPolicy: "Free cancellation up to 24 hours prior.",
+    location: "Pallathuruthy Bridge, Alleppey"
   },
   {
     title: "High-Speed Boat Ride",
@@ -223,6 +298,244 @@ export const mockPackages: Package[] = [
       "Thrilling high-speed turns & sprints",
       "Great photo opportunities"
     ],
+    capacity: "Up to 5 Guests",
+    duration: "1 Hour",
+    foodIncluded: "Not Included",
+    checkIn: "Flexible",
+    checkOut: "Flexible",
+    facilities: ["High-speed Outboard Engine", "Certified Safety Pilot", "Life Vests", "Wind Shields"],
+    cancellationPolicy: "Free cancellation up to 24 hours prior.",
+    location: "Punnamada Lake Jetty, Alleppey"
+  },
+  // NEW ACTIVITIES
+  {
+    title: "Traditional Village Tour",
+    slug: "traditional-village-tour",
+    category: "village-tour",
+    price: 1200,
+    rating: 4.8,
+    shortDescription: "Immersive walking and canoe tour through the local farming islands.",
+    description: "Discover Kuttanad, the rice bowl of Kerala. Walk along narrow fields below sea level, witness coconut leaf weaving, toddy tapping, and cruise in a non-motorized country canoe steered by locals.",
+    images: [
+      "https://images.unsplash.com/photo-1593693411515-c202e974eb8f?q=80&w=1200",
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600"
+    ],
+    inclusions: [
+      "Canoe ride through micro-canals",
+      "Walking tour of paddy fields",
+      "Interaction with local artisans",
+      "Fresh tender coconut drink",
+      "Local English/Hindi speaking guide"
+    ],
+    capacity: "2 - 12 Guests",
+    duration: "4 Hours",
+    foodIncluded: "Fresh Toddy / Coconut Drink & Local Snacks",
+    checkIn: "08:30 AM or 02:00 PM",
+    facilities: ["Traditional Canoe", "Local Guide", "Field Walks", "Drinking Water"],
+    cancellationPolicy: "Free cancellation up to 48 hours in advance.",
+    location: "Kuttanad Village Jetty, Alleppey"
+  },
+  {
+    title: "Backwater Fishing Adventure",
+    slug: "backwater-fishing-adventure",
+    category: "fishing",
+    price: 1800,
+    rating: 4.6,
+    shortDescription: "Try traditional angling and Chinese fishing net operations with local fishermen.",
+    description: "A unique opportunity to fish like a local! Head to quiet spots on a country boat, learn traditional bamboo rod fishing, and even assist in operating the massive shoreline Chinese Fishing Nets.",
+    images: [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200",
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=600"
+    ],
+    inclusions: [
+      "Traditional fishing rod & baits",
+      "Boat ride to prime fishing spots",
+      "Chinese net operation experience",
+      "Freshly fried catch (prepared on boat/jetty)",
+      "Local fishing guide"
+    ],
+    capacity: "Up to 4 Guests",
+    duration: "3 Hours",
+    foodIncluded: "Light Tea/Snacks & Fresh Fried Fish Catch",
+    checkIn: "06:00 AM or 03:30 PM",
+    facilities: ["Bamboo Fishing Rods", "Canoe Boat", "Live Bait", "Frying/Cooking Gear"],
+    cancellationPolicy: "Free cancellation up to 24 hours prior.",
+    location: "Kavalam Backwaters, Alleppey"
+  },
+  {
+    title: "Romantic Sunset Cruise",
+    slug: "romantic-sunset-cruise",
+    category: "sunset-cruise",
+    price: 2500,
+    rating: 4.9,
+    shortDescription: "A beautiful evening cruise across Vembanad Lake to watch the sunset.",
+    description: "Watch the sun melt into the horizon where the Vembanad Lake meets the sea. This cruise offers a quiet, breeze-filled evening with classical music and fresh refreshments on a luxury open-deck Shikara or private motor boat.",
+    images: [
+      "https://images.unsplash.com/photo-1593693411515-c202e974eb8f?q=80&w=1200",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600"
+    ],
+    inclusions: [
+      "Exclusive private sunset cruise",
+      "Refreshing drinks & fruit platter",
+      "Soft music onboard",
+      "Life jackets and insurance",
+      "Stunning golden-hour photography spots"
+    ],
+    capacity: "2 - 6 Guests",
+    duration: "2 Hours",
+    foodIncluded: "Mocktails, Juices, and Premium Fruit Basket",
+    checkIn: "05:00 PM",
+    checkOut: "07:00 PM",
+    facilities: ["Comfortable Sofa Seating", "Bluetooth Speaker", "Washroom", "Upper Deck Access"],
+    cancellationPolicy: "Free cancellation up to 24 hours before cruise.",
+    location: "Vembanad Lake Entrance, Alleppey"
+  },
+  // NEW PACKAGES
+  {
+    title: "Romantic Backwater Honeymoon Package",
+    slug: "honeymoon-package",
+    category: "package-honeymoon",
+    price: 18500,
+    rating: 5.0,
+    shortDescription: "Special premium houseboat stay with candlelit dinner, bed decoration, and cake.",
+    description: "Celebrate love in the Venice of the East. This package includes a private 1-bedroom premium houseboat decorated with flowers, candlelit dinner under the stars, a special honeymoon cake, private sunset kayak cruise, and premium Kerala meals customized to your preferences.",
+    images: [
+      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=1200",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200"
+    ],
+    inclusions: [
+      "Private Premium 1-Bedroom Houseboat",
+      "Floral Bed Decoration & Honeymoon Cake",
+      "Candlelit Dinner with Premium Seafood/Chicken Menu",
+      "Private Sunrise Kayaking Ride (1 Hour)",
+      "Welcome Mocktails & Full Board Meals"
+    ],
+    bedrooms: 1,
+    capacity: "2 Adults (Couples)",
+    duration: "21 Hours (Overnight)",
+    foodIncluded: "Premium Customized Full Board (Candlelit Seafood Dinner)",
+    checkIn: "12:00 PM",
+    checkOut: "09:00 AM",
+    facilities: ["Premium AC Lounge", "Bluetooth Soundbar", "Jacuzzi Bath", "Upper Deck Canopy"],
+    cancellationPolicy: "Free cancellation up to 10 days before check-in.",
+    location: "Punnamada Finishing Point, Alleppey"
+  },
+  {
+    title: "Family Backwater Reunion Cruise",
+    slug: "family-package",
+    category: "package-family",
+    price: 25000,
+    rating: 4.8,
+    shortDescription: "Spacious 3 or 4 bedroom houseboats with kids activities and local games.",
+    description: "Bring the whole family together for an unforgettable cruise. With large indoor dining spaces, board games, traditional music, and a safe, child-friendly environment, our multi-bedroom family houseboats provide standard and premium options for groups of 6 to 12 people.",
+    images: [
+      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=1200",
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200"
+    ],
+    inclusions: [
+      "Private 3-Bedroom or 4-Bedroom Houseboat",
+      "Traditional Kerala Family Lunch (Sadya)",
+      "Traditional board games & playing cards",
+      "Kid-friendly food options",
+      "Verified crew of 3 (Captain, Cook, Deckhand)"
+    ],
+    bedrooms: 3,
+    capacity: "6 - 12 Guests",
+    duration: "21 Hours (Overnight)",
+    foodIncluded: "Multi-cuisine Family Buffet (Lunch, Dinner, Breakfast & Snacks)",
+    checkIn: "12:00 PM",
+    checkOut: "09:00 AM",
+    facilities: ["Spacious Dining Area", "LED Screen with Kids channels", "Board Games", "First Aid Kit", "Safety Railings"],
+    cancellationPolicy: "Free cancellation up to 7 days before check-in.",
+    location: "Nehru Trophy Finishing Point, Alleppey"
+  },
+  {
+    title: "Day Cruise Escape Package",
+    slug: "day-cruise",
+    category: "package-day",
+    price: 7000,
+    rating: 4.7,
+    shortDescription: "Private daytime houseboat cruise showing village canals and lake views.",
+    description: "Perfect for travelers who want to enjoy the houseboat experience without spending the night. Enjoy 6 hours of private cruising with an onboard chef cooking traditional pearl spot fish fry and local rice items fresh for your lunch.",
+    images: [
+      "https://images.unsplash.com/photo-1593693411515-c202e974eb8f?q=80&w=1200",
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200"
+    ],
+    inclusions: [
+      "Private Day-Cruise Houseboat (6 Hours)",
+      "Freshly prepared Kerala Lunch onboard",
+      "Evening Tea/Coffee and local snacks (Banana Fritters)",
+      "Explore Vembanad Lake and Punnamada canals",
+      "Experienced local captain"
+    ],
+    bedrooms: 1,
+    capacity: "2 - 15 Guests",
+    duration: "6 Hours",
+    foodIncluded: "Lunch and Evening High Tea",
+    checkIn: "11:00 AM",
+    checkOut: "05:00 PM",
+    facilities: ["Large Open Sit-out", "Clean Bathroom", "Kitchen with Private Chef", "Comfortable Couch Chairs"],
+    cancellationPolicy: "Free cancellation up to 48 hours prior.",
+    location: "Punnamada Jetty, Alleppey"
+  },
+  {
+    title: "Overnight Classic Houseboat Package",
+    slug: "overnight-houseboat",
+    category: "package-overnight",
+    price: 9000,
+    rating: 4.8,
+    shortDescription: "Standard 21-hour overnight stay with all traditional meals cooked fresh onboard.",
+    description: "Our signature overnight package. Waking up to the calm water reflections, cruising past illuminated backwater temples, and enjoying hot, fresh food makes this classic package the ultimate Kerala bucket list experience.",
+    images: [
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200",
+      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=1200"
+    ],
+    inclusions: [
+      "21-Hour private houseboat charter",
+      "All meals: Welcome drink, Lunch, Evening Tea, Dinner, Breakfast",
+      "Air conditioning in bedrooms (09:00 PM to 06:00 AM)",
+      "Traditional Kerala style fish fry included",
+      "Dedicated 3-man crew"
+    ],
+    bedrooms: 1,
+    capacity: "2 Adults (Extra bed available)",
+    duration: "21 Hours",
+    foodIncluded: "Full Board (All meals prepared fresh by private chef)",
+    checkIn: "12:00 PM",
+    checkOut: "09:00 AM",
+    facilities: ["AC Bedrooms", "Attached Bathrooms", "Sundeck Chair", "Private Chef"],
+    cancellationPolicy: "Free cancellation up to 7 days before check-in.",
+    location: "Finishing Point Jetty, Alleppey"
+  },
+  {
+    title: "Premium Luxury Glass Cruise",
+    slug: "premium-luxury-package",
+    category: "package-premium",
+    price: 24000,
+    rating: 4.9,
+    shortDescription: "Ultra-luxury modern glass boat cruise with dynamic lake views.",
+    description: "The ultimate luxury statement in Kuttanad. Fully glass-enclosed air-conditioned living rooms, designer furniture, plush memory-foam queen beds, high-speed Wi-Fi, and a gourmet crew serving premium seafood items like jumbo prawns and crabs.",
+    images: [
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200"
+    ],
+    inclusions: [
+      "Ultra-Luxury Glass-Walled Houseboat",
+      "Gourmet Seafood Feast (Prawns, Karimeen, Chicken)",
+      "Full-day unlimited Air Conditioning",
+      "Attached Kayak for private exploration",
+      "Premium organic linens, toiletries and bath robes"
+    ],
+    bedrooms: 2,
+    capacity: "4 Guests",
+    duration: "21 Hours",
+    foodIncluded: "Gourmet Customized Full Board",
+    checkIn: "12:00 PM",
+    checkOut: "09:00 AM",
+    facilities: ["Glass Enclosed Living Area", "High-speed Wi-Fi", "Mini Bar", "Premium Sound System", "En-suite Luxury Bathrooms"],
+    cancellationPolicy: "Free cancellation up to 14 days before check-in.",
+    location: "Punnamada Lake Entrance, Alleppey"
   }
 ];
 
@@ -254,6 +567,34 @@ export const mockTestimonials: Testimonial[] = [
     rating: 5,
     date: "3 weeks ago",
     avatarSeed: "Priyanka",
+  },
+  {
+    name: "Sophie Dubois",
+    quote: "Wonderful experience! The crew was exceptionally helpful and took great care of us. Watching the fishermen and local birds from the top deck is peace at its best.",
+    rating: 5,
+    date: "4 days ago",
+    avatarSeed: "Sophie"
+  },
+  {
+    name: "Vishnu Prasad",
+    quote: "Best value for money. The houseboat was well-maintained and food was hot and delicious. Very direct communication, no brokers involved.",
+    rating: 5,
+    date: "3 days ago",
+    avatarSeed: "Vishnu"
+  },
+  {
+    name: "Daniel Craig",
+    quote: "The sunset kayaking was a pristine experience. Canals were narrow and beautiful. Guide was helpful with instructions and took great photos.",
+    rating: 4.8,
+    date: "2 weeks ago",
+    avatarSeed: "Daniel"
+  },
+  {
+    name: "Arjun Mehta",
+    quote: "Perfect weekend getaway. We did the overnight stay on a 2-bedroom premium boat. AC worked perfectly and the upper deck was great for evening tea.",
+    rating: 5,
+    date: "1 month ago",
+    avatarSeed: "Arjun"
   }
 ];
 
