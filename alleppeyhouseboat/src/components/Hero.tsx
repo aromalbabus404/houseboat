@@ -34,6 +34,16 @@ export default function Hero({ settings }: HeroProps) {
         <div className="absolute inset-0 flex flex-col justify-center items-center px-6 sm:px-8 md:px-16 lg:px-24 pb-8 md:pb-12 z-20 text-center">
           <div className="max-w-3xl flex flex-col items-center gap-5 mt-[-20px]">
             
+            {/* Top Tag */}
+            <motion.span
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-xs sm:text-sm font-sans font-bold uppercase tracking-[0.25em] text-accent mb-[-5px]"
+            >
+              Alleppey Houseboats
+            </motion.span>
+
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
