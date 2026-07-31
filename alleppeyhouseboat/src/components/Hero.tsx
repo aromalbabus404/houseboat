@@ -30,16 +30,16 @@ export default function Hero({ settings }: HeroProps) {
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 z-10" />
         </div>
 
-        {/* Content overlay (Left-aligned, premium minimal layout) */}
-        <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-8 md:px-16 lg:px-24 pb-8 md:pb-12 z-20">
-          <div className="max-w-3xl flex flex-col items-start gap-5">
+        {/* Content overlay (Centered, premium minimal layout) */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center px-6 sm:px-8 md:px-16 lg:px-24 pb-8 md:pb-12 z-20 text-center">
+          <div className="max-w-3xl flex flex-col items-center gap-5 mt-[-20px]">
             
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-serif text-white font-medium leading-[1.1] text-left drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif text-white font-medium leading-[1.1] text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
             >
               {settings.heroHeadline}
             </motion.h1>
@@ -49,7 +49,7 @@ export default function Hero({ settings }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-sm md:text-base text-white/80 font-sans max-w-xl text-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)] leading-relaxed"
+              className="text-sm md:text-base text-white/80 font-sans max-w-xl text-center drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)] leading-relaxed"
             >
               {settings.heroSubheadline}
             </motion.p>
