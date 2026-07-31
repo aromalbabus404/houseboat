@@ -54,7 +54,7 @@ export const mockSiteSettings: SiteSettings = {
   yearsRunning: 12,
   heroHeadline: "Experience the Magic of Alleppey Backwaters",
   heroSubheadline: "Book premium private houseboats, traditional shikara rides, and kayaking tours with verified captains and 100% price transparency.",
-  heroVideoUrl: "https://cdn.pixabay.com/video/2023/06/15/167389-837151044_large.mp4",
+  heroVideoUrl: "https://assets.mixkit.co/videos/preview/mixkit-kerala-backwaters-india-42289-large.mp4",
 };
 
 export const mockPackages: Package[] = [
