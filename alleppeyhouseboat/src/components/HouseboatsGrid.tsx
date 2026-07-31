@@ -90,7 +90,11 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
                           Starting From
                         </span>
                         <span className="font-sans text-lg md:text-xl text-white font-extrabold leading-none">
-                          ₹{pkg.price.toLocaleString()}
+                          ₹{Math.min(
+                            pkg.price,
+                            pkg.dayCruisePrice !== undefined && pkg.dayCruisePrice !== null ? pkg.dayCruisePrice : Infinity,
+                            pkg.overnightPrice !== undefined && pkg.overnightPrice !== null ? pkg.overnightPrice : Infinity
+                          ).toLocaleString()}
                         </span>
                       </div>
                       

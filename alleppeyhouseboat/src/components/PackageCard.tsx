@@ -47,7 +47,11 @@ export default function PackageCard({ pkg }: PackageCardProps) {
             {pkg.title}
           </span>
           <span className="font-sans text-xs font-semibold mt-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] text-white/90">
-            ₹{pkg.price.toLocaleString()}
+            ₹{Math.min(
+              pkg.price,
+              pkg.dayCruisePrice !== undefined && pkg.dayCruisePrice !== null ? pkg.dayCruisePrice : Infinity,
+              pkg.overnightPrice !== undefined && pkg.overnightPrice !== null ? pkg.overnightPrice : Infinity
+            ).toLocaleString()}
           </span>
         </div>
 
