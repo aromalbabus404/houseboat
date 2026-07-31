@@ -4,5 +4,9 @@ export default defineCliConfig({
   api: {
     projectId: process.env.SANITY_STUDIO_PROJECT_ID || "placeholder-id",
     dataset: process.env.SANITY_STUDIO_DATASET || "production",
+  },
+  studioHost: "alleppeyhouseboat",
+  deployment: {
+    appId: "yvdet83uy21byr1u4bcjzlug",
   }
 });
