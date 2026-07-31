@@ -47,7 +47,7 @@ export default function PackageCard({ pkg }: PackageCardProps) {
             {pkg.title}
           </span>
           <span className="font-sans text-xs font-semibold mt-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] text-white/90">
-            ₹{pkg.price.toLocaleString()} <span className="text-[10px] text-white/70">/ {isHouseboat ? "night" : "trip"}</span>
+            ₹{pkg.price.toLocaleString()}
           </span>
         </div>
 

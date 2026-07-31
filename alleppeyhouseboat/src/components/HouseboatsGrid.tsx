@@ -91,7 +91,6 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
                         </span>
                         <span className="font-sans text-lg md:text-xl text-white font-extrabold leading-none">
                           ₹{pkg.price.toLocaleString()}
-                          <span className="text-xs text-white/50 font-normal">/Night</span>
                         </span>
                       </div>
                       
