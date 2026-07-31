@@ -73,6 +73,10 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
 
                   {/* 3. Card Content Overlay */}
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 z-20 flex flex-col justify-end text-left">
+                    {/* Category Label */}
+                    <div className="inline-block self-start px-2.5 py-0.5 rounded bg-white/15 backdrop-blur-sm text-[10px] text-accent uppercase font-sans font-bold tracking-wider mb-2 border border-white/5">
+                      {pkg.category.replace("houseboat-", "")} Houseboat
+                    </div>
                     <h3 className="font-serif text-xl md:text-2xl text-white font-bold mb-2 group-hover:text-accent transition-colors duration-200">
                       {pkg.title}
                     </h3>
