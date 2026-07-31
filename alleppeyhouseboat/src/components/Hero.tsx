@@ -41,7 +41,7 @@ export default function Hero({ settings }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-xs sm:text-sm font-sans font-bold uppercase tracking-[0.25em] text-accent mb-[-5px]"
             >
-              Alleppey Houseboats
+              Alleppy Houseboats
             </motion.span>
 
             {/* Headline */}
