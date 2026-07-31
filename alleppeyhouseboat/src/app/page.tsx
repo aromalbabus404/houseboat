@@ -9,7 +9,7 @@ import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
-export const revalidate = 3600; // Revalidate cache hourly (ISR)
+export const revalidate = 10; // Revalidate cache every 10 seconds
 
 export default async function Home() {
   // Fetch all data in parallel
