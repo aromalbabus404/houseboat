@@ -1,0 +1,24 @@
+{
+  "name": "alleppy-houseboat-cms",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "sanity dev --port 3333",
+    "build": "sanity build",
+    "start": "sanity start",
+    "clean": "sanity clean"
+  },
+  "dependencies": {
+    "@sanity/vision": "^6.8.0",
+    "lucide-react": "^0.474.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sanity": "^6.8.0",
+    "styled-components": "^6.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/react": "^19",
+    "typescript": "^5"
+  }
+}
