@@ -46,6 +46,20 @@ export const packageSchema = defineType({
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
+      name: "dayCruisePrice",
+      title: "Day Cruise Price",
+      type: "number",
+      description: "Price when Day Cruise option is selected. If empty, falls back to standard calculation.",
+      validation: (Rule) => Rule.min(0),
+    }),
+    defineField({
+      name: "overnightPrice",
+      title: "Overnight Stay Price",
+      type: "number",
+      description: "Price when Overnight stay option is selected. If empty, falls back to standard calculation.",
+      validation: (Rule) => Rule.min(0),
+    }),
+    defineField({
       name: "rating",
       title: "Rating",
       type: "number",
@@ -76,20 +90,6 @@ export const packageSchema = defineType({
       type: "array",
       of: [{ type: "string" }],
       description: "List of inclusions (e.g. Welcome Drink, Lunch, Cruise Time)",
-    }),
-    defineField({
-      name: "dayCruisePrice",
-      title: "Day Cruise Price",
-      type: "number",
-      description: "Price when Day Cruise option is selected. If empty, falls back to standard calculation.",
-      validation: (Rule) => Rule.min(0),
-    }),
-    defineField({
-      name: "overnightPrice",
-      title: "Overnight Stay Price",
-      type: "number",
-      description: "Price when Overnight stay option is selected. If empty, falls back to standard calculation.",
-      validation: (Rule) => Rule.min(0),
     }),
   ],
 });
