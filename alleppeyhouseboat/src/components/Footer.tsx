@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { SiteSettings } from "@/lib/mockData";
 
 interface FooterProps {
@@ -8,19 +7,19 @@ interface FooterProps {
 export default function Footer({ settings }: FooterProps) {
   return (
     <footer className="w-full flex flex-col">
-      {/* 1. Sunset Image Band */}
+      {/* 1. Sunset Video Band */}
       <div className="relative w-full h-[250px] overflow-hidden border-t border-[#FDF6E9]/10">
-        <Image
-          src="/footer-sunset.png"
-          alt="Sunset over Kerala backwaters with a traditional houseboat and palm trees"
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
+        <video
+          src="/document_6300798460106907823.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         />
         
         {/* Soft overlay to ensure readability */}
-        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
         
         <div className="absolute inset-0 flex items-center justify-center text-center p-4 z-20 text-[#FDF6E9]">
           <span 

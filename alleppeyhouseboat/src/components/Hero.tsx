@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, Volume2, VolumeX } from "lucide-react";
 import { SiteSettings } from "@/lib/mockData";
 
 interface HeroProps {
@@ -10,6 +11,15 @@ interface HeroProps {
 
 export default function Hero({ settings }: HeroProps) {
   const videoSrc = settings.heroVideoFileUrl || settings.heroVideoUrl || "https://cdn.pixabay.com/video/2023/06/15/167389-837151044_large.mp4";
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
 
   return (
     <section className="px-4 md:px-8 pt-1 pb-4 md:pt-2 md:pb-6 bg-bg-cream">
@@ -19,6 +29,7 @@ export default function Hero({ settings }: HeroProps) {
         {/* Background video */}
         <div className="absolute inset-0 w-full h-full z-0">
           <video
+            ref={videoRef}
             src={videoSrc}
             autoPlay
             loop
@@ -67,12 +78,12 @@ export default function Hero({ settings }: HeroProps) {
           </div>
         </div>
 
-        {/* Bottom Left Button: Call Us */}
+        {/* Bottom Left Buttons: Call Us & Mute/Unmute */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="absolute bottom-6 left-6 md:left-12 z-30"
+          className="absolute bottom-6 left-6 md:left-12 z-30 flex items-center gap-3"
         >
           <a
             href="tel:+917356462150"
@@ -81,6 +92,18 @@ export default function Hero({ settings }: HeroProps) {
             <Phone className="w-3.5 h-3.5 text-accent" />
             <span>Call Us</span>
           </a>
+
+          <button
+            onClick={toggleMute}
+            className="inline-flex items-center justify-center p-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition backdrop-blur-sm hover:scale-[1.02] active:scale-95 cursor-pointer"
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+          >
+            {isMuted ? (
+              <VolumeX className="w-3.5 h-3.5 text-white" />
+            ) : (
+              <Volume2 className="w-3.5 h-3.5 text-accent" />
+            )}
+          </button>
         </motion.div>
 
         {/* Bottom Right Button: Book Now */}
