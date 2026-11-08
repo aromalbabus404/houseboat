@@ -31,10 +31,10 @@ export default function PopularPackages({ packages }: PopularPackagesProps) {
             </h2>
           </div>
           <Link
-            href="/packages"
+            href="/houseboats"
             className="inline-flex items-center gap-2 font-sans text-sm font-bold text-primary hover:text-primary-light transition group"
           >
-            <span>View All Packages</span>
+            <span>View All Houseboats</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
