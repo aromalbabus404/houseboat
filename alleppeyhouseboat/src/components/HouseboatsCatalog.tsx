@@ -15,19 +15,29 @@ interface HouseboatsCatalogProps {
 const categories = [
   { id: "all", label: "All Houseboats" },
   { id: "private", label: "Private" },
-  { id: "luxury", label: "Luxury" },
-  { id: "premium", label: "Premium" },
-  { id: "deluxe", label: "Deluxe" },
   { id: "sharing", label: "Sharing" },
 ];
 
 export default function HouseboatsCatalog({ packages, initialCategory = "all", videoSrc }: HouseboatsCatalogProps) {
-  const [activeFilter, setActiveFilter] = useState(initialCategory.toLowerCase());
+  const [activeFilter, setActiveFilter] = useState(
+    ["luxury", "premium", "deluxe"].includes(initialCategory.toLowerCase()) ? "private" : initialCategory.toLowerCase()
+  );
 
-  // Filter houseboats
+  // Filter houseboats: Only Private and Sharing
   const filteredPackages = packages.filter((pkg) => {
     if (!pkg.category.startsWith("houseboat-")) return false;
     if (activeFilter === "all") return true;
+    if (activeFilter === "private") {
+      return (
+        pkg.category === "houseboat-private" ||
+        pkg.category === "houseboat-luxury" ||
+        pkg.category === "houseboat-premium" ||
+        pkg.category === "houseboat-deluxe"
+      );
+    }
+    if (activeFilter === "sharing") {
+      return pkg.category === "houseboat-sharing";
+    }
     return pkg.category === `houseboat-${activeFilter}`;
   });
 
@@ -56,7 +66,7 @@ export default function HouseboatsCatalog({ packages, initialCategory = "all", v
               Our Houseboat Collection
             </h1>
             <p className="font-sans text-xs md:text-sm text-white/80 max-w-xl mx-auto drop-shadow-sm leading-relaxed">
-              Choose from a wide variety of premium and budget-friendly houseboats cruising through Alappuzha.
+              Choose from our private chartered and shared cabin houseboats cruising through Alappuzha.
             </p>
           </div>
         </div>
@@ -92,10 +102,10 @@ export default function HouseboatsCatalog({ packages, initialCategory = "all", v
       </div>
 
       {/* 3. CATALOG LISTINGS GRID */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredPackages.length > 0 ? (

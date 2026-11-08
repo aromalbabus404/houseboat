@@ -28,9 +28,6 @@ export const packageSchema = defineType({
       options: {
         list: [
           { title: "Houseboat - Private", value: "houseboat-private" },
-          { title: "Houseboat - Luxury", value: "houseboat-luxury" },
-          { title: "Houseboat - Premium", value: "houseboat-premium" },
-          { title: "Houseboat - Deluxe", value: "houseboat-deluxe" },
           { title: "Houseboat - Sharing", value: "houseboat-sharing" },
           { title: "Sharing Boat Ride", value: "sharing-boat-ride" },
           { title: "Shikara Ride", value: "shikara" },

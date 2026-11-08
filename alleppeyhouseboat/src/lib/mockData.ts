@@ -15,7 +15,7 @@ export interface SiteSettings {
 export interface Package {
   title: string;
   slug: string;
-  category: string; // houseboat-deluxe, houseboat-premium, houseboat-luxury, houseboat-sharing, houseboat-private, shikara, kayaking, speedboat, village-tour, fishing, sunset-cruise, package-day, package-overnight, package-honeymoon, package-family, package-couple, package-group, package-premium
+  category: string; // houseboat-private, houseboat-sharing, shikara, kayaking, speedboat, sharing-boat-ride, village-tour, fishing, sunset-cruise
   price: number;
   rating: number;
   shortDescription: string;
@@ -71,13 +71,13 @@ export const mockSiteSettings: SiteSettings = {
 
 export const mockPackages: Package[] = [
   {
-    title: "1-Bedroom Deluxe Houseboat",
-    slug: "1-bedroom-deluxe-houseboat",
-    category: "houseboat-deluxe",
+    title: "1-Bedroom Private Houseboat",
+    slug: "1-bedroom-private-houseboat",
+    category: "houseboat-private",
     price: 8500,
     rating: 4.8,
     shortDescription: "Ideal for couples seeking a standard, comfortable cruise through Alleppey's scenic canals.",
-    description: "Our Deluxe Houseboats are perfect for budget-friendly backwater trips. They offer complete privacy with fully furnished bedrooms, attached bathrooms, a small living/dining area, and delicious traditional Kerala meals prepared onboard by your private chef. Fully operational standard AC runs from 9:00 PM to 6:00 AM.",
+    description: "Our Private Houseboats are perfect for backwater trips. They offer complete privacy with fully furnished bedrooms, attached bathrooms, a small living/dining area, and delicious traditional Kerala meals prepared onboard by your private chef.",
     images: [
       "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200",
       "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=1200",
@@ -102,13 +102,13 @@ export const mockPackages: Package[] = [
     location: "Punnamada Jetty, Alleppey"
   },
   {
-    title: "2-Bedroom Premium Houseboat",
-    slug: "2-bedroom-premium-houseboat",
-    category: "houseboat-premium",
+    title: "2-Bedroom Private Houseboat",
+    slug: "2-bedroom-private-houseboat",
+    category: "houseboat-private",
     price: 13500,
     rating: 4.9,
     shortDescription: "Superior comfort and full-day air conditioning for families or small groups.",
-    description: "Enjoy a superior backwater journey on our Premium Houseboats. Complete with refined wooden paneling, a spacious glass-enclosed upper deck, and premium furnishing. Traditional meals are served with customizable menus. Premium AC runs unlimited during the cruise.",
+    description: "Enjoy a superior backwater journey on our Private Houseboats. Complete with refined wooden paneling, a spacious glass-enclosed upper deck, and premium furnishing. Traditional meals are served with customizable menus.",
     images: [
       "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=1200",
       "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200",
@@ -135,9 +135,9 @@ export const mockPackages: Package[] = [
     overnightPrice: 7500
   },
   {
-    title: "Royal Luxury Glass Houseboat",
-    slug: "royal-luxury-glass-houseboat",
-    category: "houseboat-luxury",
+    title: "3-Bedroom Private Houseboat",
+    slug: "3-bedroom-private-houseboat",
+    category: "houseboat-private",
     price: 22000,
     rating: 4.9,
     shortDescription: "Ultra-luxury glass houseboat with dynamic views, modern interiors, and high-end services.",
@@ -661,8 +661,8 @@ export const mockGallery: GalleryImage[] = [
 
 export const mockFAQs: FAQ[] = [
   {
-    question: "What is the difference between Private, Luxury, Premium, and Deluxe houseboats?",
-    answer: "Deluxe houseboats are standard budget-friendly boats where air conditioning runs only at night (usually 9:00 PM to 6:00 AM). Premium boats offer better wooden interiors, upper deck options, and full-day air conditioning. Luxury houseboats are ultra-premium with glass rooms, luxury furniture, and top-tier menus. Sharing houseboats allow you to rent a single cabin while sharing common spaces, whereas Private houseboats are fully chartered for your group only.",
+    question: "What is the difference between Private and Sharing houseboats?",
+    answer: "Private houseboats are fully chartered exclusively for your family or group, offering complete privacy, custom meals, and a dedicated crew. Sharing houseboats allow solo travelers and couples to book a private bedroom cabin while sharing common dining and lounge spaces with other guests at an economical price.",
     order: 1,
   },
   {

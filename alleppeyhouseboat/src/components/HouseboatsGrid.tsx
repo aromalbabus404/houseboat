@@ -32,7 +32,7 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
             Curated Houseboat Experiences
           </h2>
           <p className="font-sans text-xs sm:text-sm md:text-base text-charcoal/70">
-            Explore our collection of premium and budget-friendly houseboats cruising through Alappuzha.
+            Explore our collection of private and sharing houseboats cruising through Alappuzha.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
                   </div>
 
                   <div className="absolute top-2.5 left-2.5 sm:top-4.5 sm:left-4.5 z-20 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/75 backdrop-blur-sm border border-white/10 shadow-md text-accent font-sans text-[8px] sm:text-[9px] font-extrabold uppercase tracking-wider">
-                    {pkg.category.replace("houseboat-", "")} <span className="hidden sm:inline">Houseboat</span>
+                    {pkg.category === "houseboat-sharing" ? "Sharing" : "Private"} <span className="hidden sm:inline">Houseboat</span>
                   </div>
 
                   {/* 3. Card Content Overlay */}
