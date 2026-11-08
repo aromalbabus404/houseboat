@@ -5,7 +5,7 @@ import { Package } from "@/lib/mockData";
 import PackageCard from "./PackageCard";
 
 interface ActivityLandingPageProps {
-  category: "shikara" | "kayaking" | "speedboat" | "village-tour" | "fishing" | "sunset-cruise";
+  category: "shikara" | "kayaking" | "speedboat" | "village-tour" | "fishing" | "sunset-cruise" | "sharing-boat-ride" | "houseboat-sharing";
   title: string;
   tagline: string;
   description: string;
@@ -19,8 +19,13 @@ export default function ActivityLandingPage({
   description,
   packages,
 }: ActivityLandingPageProps) {
-  // Filter packages in this category
-  const filteredPackages = packages.filter((pkg) => pkg.category === category);
+  // Filter packages in this category (support both sharing-boat-ride and houseboat-sharing)
+  const filteredPackages = packages.filter((pkg) => {
+    if (category === "sharing-boat-ride") {
+      return pkg.category === "sharing-boat-ride" || pkg.category === "houseboat-sharing";
+    }
+    return pkg.category === category;
+  });
 
   return (
     <div className="min-h-screen bg-bg-cream pb-20">

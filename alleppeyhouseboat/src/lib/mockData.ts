@@ -224,6 +224,34 @@ export const mockPackages: Package[] = [
     location: "Nehru Trophy Finishing Point, Alleppey"
   },
   {
+    title: "Alleppey Shared Boat Cruise",
+    slug: "alleppey-shared-boat-cruise",
+    category: "sharing-boat-ride",
+    price: 900,
+    rating: 4.7,
+    shortDescription: "Affordable shared motorboat cruise covering Alleppey backwaters and scenic paddy canals.",
+    description: "Enjoy a scenic shared boat cruise through the legendary backwaters of Alappuzha. Ideal for travelers who want to experience the sights and canals at an economical per-seat price.",
+    images: [
+      "https://images.unsplash.com/photo-1593693411515-c202e974eb8f?q=80&w=1200",
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200"
+    ],
+    inclusions: [
+      "Per-Seat Shared Boat Cruise",
+      "Scenic Canal & Lake Sightseeing",
+      "Life Jackets & Safety Gear",
+      "Experienced Local Helmsman"
+    ],
+    bedrooms: 0,
+    capacity: "Per Person Ticket",
+    duration: "2 - 3 Hours",
+    foodIncluded: "Packaged Water & Tea",
+    checkIn: "Flexible (10:00 AM - 4:00 PM)",
+    checkOut: "Same Day",
+    facilities: ["Life Jackets", "Covered Canopy Seating", "Scenic Open Views"],
+    cancellationPolicy: "Free cancellation up to 24 hours before trip.",
+    location: "Finishing Point Jetty, Alleppey"
+  },
+  {
     title: "Traditional Shikara Boat Ride",
     slug: "traditional-shikara-boat-ride",
     category: "shikara",

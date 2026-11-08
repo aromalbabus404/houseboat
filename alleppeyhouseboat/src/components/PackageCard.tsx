@@ -10,7 +10,7 @@ interface PackageCardProps {
 
 export default function PackageCard({ pkg }: PackageCardProps) {
   const isHouseboat = pkg.category.startsWith("houseboat-");
-  const friendlyCategory = pkg.category.replace("houseboat-", "");
+  const friendlyCategory = pkg.category === "sharing-boat-ride" ? "Sharing Boat" : pkg.category.replace("houseboat-", "");
 
   return (
     <Link 

@@ -13,7 +13,7 @@ interface ActivitiesSectionProps {
 export default function ActivitiesSection({ packages }: ActivitiesSectionProps) {
   // Extract activity packages
   const activities = packages.filter((pkg) =>
-    ["shikara", "kayaking", "speedboat"].includes(pkg.category)
+    ["shikara", "kayaking", "speedboat", "sharing-boat-ride"].includes(pkg.category)
   );
 
   return (
@@ -36,7 +36,7 @@ export default function ActivitiesSection({ packages }: ActivitiesSectionProps) 
         </div>
 
         {/* Activities List */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {activities.map((act, idx) => {
             return (
               <motion.div
@@ -71,7 +71,7 @@ export default function ActivitiesSection({ packages }: ActivitiesSectionProps) 
                   </div>
 
                   <div className="absolute top-4.5 left-4.5 z-20 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-sm border border-white/10 shadow-md text-accent font-sans text-[9px] font-extrabold uppercase tracking-widest">
-                    {act.category === "shikara" ? "Shikara" : act.category === "kayaking" ? "Kayaking" : "Speedboat"}
+                    {act.category === "shikara" ? "Shikara" : act.category === "kayaking" ? "Kayaking" : act.category === "speedboat" ? "Speedboat" : "Sharing Boat"}
                   </div>
 
                   {/* 3. Floating Bottom Details Overlay */}
@@ -81,7 +81,7 @@ export default function ActivitiesSection({ packages }: ActivitiesSectionProps) 
                         {act.title}
                       </span>
                       <span className="font-sans text-xs font-semibold mt-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] text-white/90">
-                        ₹{act.price.toLocaleString()} <span className="text-[10px] text-white/70">/ {act.category === "kayaking" ? "person" : act.category === "shikara" ? "hour" : "trip"}</span>
+                        ₹{act.price.toLocaleString()} <span className="text-[10px] text-white/70">/ {act.category === "kayaking" || act.category === "sharing-boat-ride" ? "person" : act.category === "shikara" ? "hour" : "trip"}</span>
                       </span>
                     </div>
 

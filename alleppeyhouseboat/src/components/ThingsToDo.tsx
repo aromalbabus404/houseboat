@@ -14,6 +14,7 @@ const categoryEmojis: Record<string, string> = {
   "kayaking": "🛶 ",
   "shikara": "🛥️ ",
   "speedboat": "🚤 ",
+  "sharing-boat-ride": "🚢 ",
   "village-tour": "🌴 ",
   "fishing": "🎣 ",
   "sunset-cruise": "🌅 "
@@ -22,7 +23,7 @@ const categoryEmojis: Record<string, string> = {
 export default function ThingsToDo({ packages }: ThingsToDoProps) {
   // Extract activity packages from the CMS packages
   const activities = packages.filter((pkg) =>
-    ["shikara", "kayaking", "speedboat", "village-tour", "fishing", "sunset-cruise"].includes(pkg.category)
+    ["shikara", "kayaking", "speedboat", "sharing-boat-ride", "village-tour", "fishing", "sunset-cruise"].includes(pkg.category)
   );
 
   return (

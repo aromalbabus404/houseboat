@@ -7,7 +7,7 @@ export default defineConfig({
   name: "default",
   title: "Alleppy Houseboat Studio",
 
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "placeholder-id",
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "e05k1vnn",
   dataset: process.env.SANITY_STUDIO_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
 
   plugins: [
