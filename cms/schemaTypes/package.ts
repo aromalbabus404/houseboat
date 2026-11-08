@@ -50,14 +50,16 @@ export const packageSchema = defineType({
       name: "dayCruisePrice",
       title: "Day Cruise Price",
       type: "number",
-      description: "Price when Day Cruise option is selected. If empty, falls back to standard calculation.",
+      description: "Price when Day Cruise option is selected. (Only applies to Houseboats)",
+      hidden: ({ document }) => typeof document?.category !== "string" || !document.category.startsWith("houseboat-"),
       validation: (Rule) => Rule.min(0),
     }),
     defineField({
       name: "overnightPrice",
       title: "Overnight Stay Price",
       type: "number",
-      description: "Price when Overnight stay option is selected. If empty, falls back to standard calculation.",
+      description: "Price when Overnight stay option is selected. (Only applies to Houseboats)",
+      hidden: ({ document }) => typeof document?.category !== "string" || !document.category.startsWith("houseboat-"),
       validation: (Rule) => Rule.min(0),
     }),
     defineField({

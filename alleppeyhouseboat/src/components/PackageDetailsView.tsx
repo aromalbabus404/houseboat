@@ -18,7 +18,12 @@ export default function PackageDetailsView({ pkg, settings }: PackageDetailsView
 
   const isHouseboat = pkg.category.startsWith("houseboat-");
   const isPackage = pkg.category.startsWith("package-");
-  const friendlyCategory = pkg.category.replace("houseboat-", "").replace("package-", "");
+  const isSharingHouseboat = pkg.category === "houseboat-sharing";
+  const friendlyCategory = isHouseboat
+    ? (isSharingHouseboat ? "Sharing Houseboat" : "Private Houseboat")
+    : pkg.category === "sharing-boat-ride"
+    ? "Sharing Boat Ride"
+    : pkg.category.replace("houseboat-", "").replace("package-", "").replace(/-/g, " ");
   
   // Tomorrow's date utility for default date input
   const getTomorrowDateString = () => {
@@ -51,8 +56,10 @@ export default function PackageDetailsView({ pkg, settings }: PackageDetailsView
     ? pkg.overnightPrice
     : (isOvernightFirst ? pkg.price : pkg.price + 4000);
 
-  // Dynamic pricing calculations based on selected option
-  const calculatedPrice = cruiseType === "day" ? dayCruisePriceVal : overnightPriceVal;
+  // Dynamic pricing calculations based on selected option (activities use base price directly)
+  const calculatedPrice = isHouseboat
+    ? (cruiseType === "day" ? dayCruisePriceVal : overnightPriceVal)
+    : pkg.price;
 
   // Format date nicely for the message (e.g. 15 Aug 2026)
   const formattedDate = bookingDate ? new Date(bookingDate).toLocaleDateString('en-IN', {
@@ -66,8 +73,11 @@ export default function PackageDetailsView({ pkg, settings }: PackageDetailsView
 
 ⛵ Package: ${pkg.title}
 📅 Date: ${formattedDate}
-👥 Guests: ${adults} Adults, ${children} Children, ${couples} Couples
-🕒 Cruise Option: ${cruiseType === "overnight" ? "Overnight Stay" : "Day Cruise"}
+👥 Guests: ${adults} Adults, ${children} Children, ${couples} Couples${
+    isHouseboat
+      ? `\n🕒 Cruise Option: ${cruiseType === "overnight" ? "Overnight Stay" : "Day Cruise"}`
+      : ""
+  }
 💰 Total Price: ₹${calculatedPrice.toLocaleString()}
 
 Please check availability.`;
@@ -248,50 +258,52 @@ Please check availability.`;
                 </div>
               </div>
 
-              {/* Cruise Type Radio Button Style Selector */}
-              <div className="mb-6">
-                <span className="font-sans text-xs font-bold text-primary-dark uppercase tracking-wider block mb-2.5">
-                  Cruise Option
-                </span>
-                <div className="grid grid-cols-2 gap-3">
-                  <label className={`flex flex-col items-center justify-center p-3.5 rounded-2xl border cursor-pointer select-none transition-all duration-200 ${
-                    cruiseType === "day" 
-                      ? "bg-[#cdeed6]/45 border-[#20ba5a] text-primary-dark font-extrabold shadow-sm" 
-                      : "bg-white border-primary/10 text-charcoal hover:bg-primary/5"
-                  }`}>
-                    <input 
-                      type="radio" 
-                      name="cruiseType" 
-                      value="day" 
-                      checked={cruiseType === "day"} 
-                      onChange={() => setCruiseType("day")} 
-                      className="sr-only" 
-                    />
-                    <span className="font-sans text-xs">Day Cruise</span>
-                    <span className="font-sans text-[10px] opacity-75 mt-1 font-semibold">
-                      ₹{dayCruisePriceVal.toLocaleString()}
-                    </span>
-                  </label>
-                  <label className={`flex flex-col items-center justify-center p-3.5 rounded-2xl border cursor-pointer select-none transition-all duration-200 ${
-                    cruiseType === "overnight" 
-                      ? "bg-[#cdeed6]/45 border-[#20ba5a] text-primary-dark font-extrabold shadow-sm" 
-                      : "bg-white border-primary/10 text-charcoal hover:bg-primary/5"
-                  }`}>
-                    <input 
-                      type="radio" 
-                      name="cruiseType" 
-                      value="overnight" 
-                      checked={cruiseType === "overnight"} 
-                      onChange={() => setCruiseType("overnight")} 
-                      className="sr-only" 
-                    />
-                    <span className="font-sans text-xs">Overnight stay</span>
-                    <span className="font-sans text-[10px] opacity-75 mt-1 font-semibold">
-                      ₹{overnightPriceVal.toLocaleString()}
-                    </span>
-                  </label>
+              {/* Cruise Type Radio Button Style Selector (Only shown for Houseboats) */}
+              {isHouseboat && (
+                <div className="mb-6">
+                  <span className="font-sans text-xs font-bold text-primary-dark uppercase tracking-wider block mb-2.5">
+                    Cruise Option
+                  </span>
+                  <div className="grid grid-cols-2 gap-3">
+                    <label className={`flex flex-col items-center justify-center p-3.5 rounded-2xl border cursor-pointer select-none transition-all duration-200 ${
+                      cruiseType === "day" 
+                        ? "bg-[#cdeed6]/45 border-[#20ba5a] text-primary-dark font-extrabold shadow-sm" 
+                        : "bg-white border-primary/10 text-charcoal hover:bg-primary/5"
+                    }`}>
+                      <input 
+                        type="radio" 
+                        name="cruiseType" 
+                        value="day" 
+                        checked={cruiseType === "day"} 
+                        onChange={() => setCruiseType("day")} 
+                        className="sr-only" 
+                      />
+                      <span className="font-sans text-xs">Day Cruise</span>
+                      <span className="font-sans text-[10px] opacity-75 mt-1 font-semibold">
+                        ₹{dayCruisePriceVal.toLocaleString()}
+                      </span>
+                    </label>
+                    <label className={`flex flex-col items-center justify-center p-3.5 rounded-2xl border cursor-pointer select-none transition-all duration-200 ${
+                      cruiseType === "overnight" 
+                        ? "bg-[#cdeed6]/45 border-[#20ba5a] text-primary-dark font-extrabold shadow-sm" 
+                        : "bg-white border-primary/10 text-charcoal hover:bg-primary/5"
+                    }`}>
+                      <input 
+                        type="radio" 
+                        name="cruiseType" 
+                        value="overnight" 
+                        checked={cruiseType === "overnight"} 
+                        onChange={() => setCruiseType("overnight")} 
+                        className="sr-only" 
+                      />
+                      <span className="font-sans text-xs">Overnight stay</span>
+                      <span className="font-sans text-[10px] opacity-75 mt-1 font-semibold">
+                        ₹{overnightPriceVal.toLocaleString()}
+                      </span>
+                    </label>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Travel Date Selector */}
               <div className="mb-6">
