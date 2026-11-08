@@ -82,12 +82,44 @@ export async function getPackages(): Promise<Package[]> {
 
 // Get a single package by slug
 export async function getPackage(slug: string): Promise<Package | null> {
+  const decodedSlug = (() => {
+    try {
+      return decodeURIComponent(slug);
+    } catch {
+      return slug;
+    }
+  })();
+  const dashedSlug = decodedSlug.toLowerCase().trim().replace(/\s+/g, "-");
+  const spacedSlug = decodedSlug.replace(/[-_]+/g, " ");
+
+  const findFallback = () => {
+    return (
+      mockPackages.find(
+        (p) =>
+          p.slug === slug ||
+          p.slug === decodedSlug ||
+          p.slug.toLowerCase() === decodedSlug.toLowerCase() ||
+          p.slug.toLowerCase() === dashedSlug ||
+          p.slug.toLowerCase() === spacedSlug.toLowerCase() ||
+          p.title.toLowerCase() === decodedSlug.toLowerCase()
+      ) || null
+    );
+  };
+
   if (!isSanityConfigured()) {
-    const pkg = mockPackages.find((p) => p.slug === slug);
-    return pkg || null;
+    return findFallback();
   }
   try {
-    const query = `*[_type == "package" && slug.current == $slug][0]{
+    const query = `*[_type == "package" && (
+      slug.current == $slug ||
+      slug.current == $decodedSlug ||
+      lower(slug.current) == lower($slug) ||
+      lower(slug.current) == lower($decodedSlug) ||
+      lower(slug.current) == lower($dashedSlug) ||
+      lower(slug.current) == lower($spacedSlug) ||
+      title == $decodedSlug ||
+      lower(title) == lower($decodedSlug)
+    )][0]{
       title,
       "slug": slug.current,
       category,
@@ -100,22 +132,28 @@ export async function getPackage(slug: string): Promise<Package | null> {
       dayCruisePrice,
       overnightPrice
     }`;
-    const data = await client!.fetch(query, { slug });
+    const data = await client!.fetch(query, {
+      slug,
+      decodedSlug,
+      dashedSlug,
+      spacedSlug,
+    });
     if (!data) {
-      const fallbackPkg = mockPackages.find((p) => p.slug === slug);
-      return fallbackPkg || null;
+      return findFallback();
     }
     return {
       ...data,
-      images: data.images && data.images.length > 0 ? data.images : [
-        "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200"
-      ],
-      inclusions: data.inclusions || []
+      images:
+        data.images && data.images.length > 0
+          ? data.images
+          : [
+              "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200",
+            ],
+      inclusions: data.inclusions || [],
     };
   } catch (error) {
     console.warn(`Failed to fetch package ${slug} from Sanity, using fallback.`, error);
-    const fallbackPkg = mockPackages.find((p) => p.slug === slug);
-    return fallbackPkg || null;
+    return findFallback();
   }
 }
 
