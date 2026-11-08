@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Star, ArrowUpRight } from "lucide-react";
+import { Star, ArrowUpRight, ArrowRight } from "lucide-react";
 import { Package } from "@/lib/mockData";
 
 interface HouseboatsGridProps {
@@ -18,6 +18,9 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
   if (houseboatPackages.length === 0) {
     return null;
   }
+
+  // Display only 4 houseboats on the homepage
+  const displayedPackages = houseboatPackages.slice(0, 4);
 
   return (
     <section className="py-10 md:py-[50px] bg-bg-cream">
@@ -36,9 +39,9 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
           </p>
         </div>
 
-        {/* Packages Grid: 2 columns on mobile, 2 on tablet, 3 on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
-          {houseboatPackages.map((pkg, idx) => {
+        {/* Packages Grid: 2 columns on mobile, 2 on tablet, 4 on desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
+          {displayedPackages.map((pkg, idx) => {
             return (
               <motion.div
                 key={pkg.slug}
@@ -57,7 +60,7 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
                     src={pkg.images[0] || "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=600"}
                     alt={pkg.title}
                     fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
@@ -107,6 +110,17 @@ export default function HouseboatsGrid({ packages }: HouseboatsGridProps) {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* More Houseboats Button */}
+        <div className="flex justify-center mt-8 sm:mt-12">
+          <Link
+            href="/houseboats"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-primary hover:bg-primary-light text-white font-sans font-bold text-xs uppercase tracking-wider shadow hover:scale-[1.02] active:scale-95 transition duration-150 cursor-pointer"
+          >
+            <span>More Houseboats</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>
